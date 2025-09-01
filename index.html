@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StuDimi - 디미고 학습 도우미</title>
+    <!-- 외부 CSS 로드 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🎓 StuDimi</a>
+            <ul class="nav-links">
+                <li><a href="#lectures-tab">온라인 강의</a></li>
+                <li><a href="#mentoring-tab">멘토링</a></li>
+                <li><a href="#clubs-tab">동아리</a></li>
+                <li><a href="#todo-tab">Todo-list</a></li>
+            </ul>
+            <div class="user-info">
+                <span>김디미님 환영합니다!</span>
+                <div class="user-avatar">김</div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Stu-DIMI</h1>
+                <p>통합 학습 커뮤니티 플랫폼으로 더 스마트하게 공부하세요</p>
+            </section>
+
+            <section class="features">
+                <div class="feature-card lectures">
+                    <div class="feature-icon">📚</div>
+                    <h3>온라인 강의/과제</h3>
+                    <p>효율적인 학습 관리를 위한 통합 시스템</p>
+                    <ul class="feature-list">
+                        <li>과제 공유 및 일정 공유</li>
+                        <li>스터디 그룹 자동 매칭</li>
+                        <li>ZOOM 연동 One-Click 접속</li>
+                        <li>진도 관리 및 알림</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card mentoring">
+                    <div class="feature-icon">💬</div>
+                    <h3>실시간 멘토링 센터</h3>
+                    <p>언제든지 도움받을 수 있는 학습 지원 시스템</p>
+                    <ul class="feature-list">
+                        <li>자습시간 실시간 질문, 답변</li>
+                        <li>과목별 전문 멘토 배치</li>
+                        <li>HiClass 연동 서비스</li>
+                        <li>1:1 맞춤형 상담</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card clubs">
+                    <div class="feature-icon">👥</div>
+                    <h3>동아리 통합 관리</h3>
+                    <p>모든 동아리 활동을 한 곳에서 관리</p>
+                    <ul class="feature-list">
+                        <li>전체 동아리 활동 현황</li>
+                        <li>동아리별 전용 페이지</li>
+                        <li>신입생 모집 시스템</li>
+                        <li>동아리 간 협업 매칭</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card todo">
+                    <div class="feature-icon">✅</div>
+                    <h3>스마트 Todo-list</h3>
+                    <p>개인 맞춤형 학습 일정 관리</p>
+                    <ul class="feature-list">
+                        <li>과제 마감일 자동 알림</li>
+                        <li>우선순위 자동 정렬</li>
+                        <li>진행 상황 시각화</li>
+                        <li>팀 프로젝트 공동 관리</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="dashboard-preview">
+                <div class="dashboard-header">
+                    <h2>📊 나의 학습 대시보드</h2>
+                    <span>오늘: 2025년 9월 1일</span>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">진행중인 과제</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">참여중인 스터디</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">가입한 동아리</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">이번 주 완료율</div>
+                    </div>
+                </div>
+
+                <div class="section-tabs">
+                    <button class="tab-button active" onclick="showTab('lectures-tab')">📚 온라인 강의</button>
+                    <button class="tab-button" onclick="showTab('mentoring-tab')">💬 멘토링</button>
+                    <button class="tab-button" onclick="showTab('clubs-tab')">👥 동아리</button>
+                    <button class="tab-button" onclick="showTab('todo-tab')">✅ Todo-list</button>
+                </div>
+
+                <div id="lectures-tab" class="tab-content active">
+                    <h3>🎯 추천 스터디 그룹</h3>
+                    <div class="study-groups">
+                        <div class="group-card">
+                            <div class="group-title">알고리즘 문제해결 스터디</div>
+                            <div class="group-meta">👥 4/6명 | 📅 매주 화, 목 19:00</div>
+                            <p>백준 골드 문제 위주로 진행하는 스터디입니다.</p>
+                            <button class="join-btn">참여하기</button>
+                        </div>
+                        <div class="group-card">
+                            <div class="group-title">웹개발 프로젝트팀</div>
+                            <div class="group-meta">👥 3/5명 | 📅 매일 20:00</div>
+                            <p>React와 Node.js로 실제 서비스를 만드는 팀입니다.</p>
+                            <button class="join-btn">참여하기</button>
+                        </div>
+                        <div class="group-card">
+                            <div class="group-title">수학 기초반 스터디</div>
+                            <div class="group-meta">👥 6/8명 | 📅 매주 월, 수, 금 18:30</div>
+                            <p>수학 기초부터 차근차근 다지는 스터디입니다.</p>
+                            <button class="join-btn">참여하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mentoring-tab" class="tab-content">
+                    <h3>💭 실시간 질문-답변 채팅</h3>
+                    <div class="chat-container">
+                        <div class="chat-header">🔥 수학 멘토링 채팅방 (현재 접속: 15명)</div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message">
+                                <div class="message-author">멘토 김선생님</div>
+                                <div>안녕하세요! 수학 관련 질문이 있으시면 언제든 물어보세요 📚</div>
+                            </div>
+                            <div class="message">
+                                <div class="message-author">학생A</div>
+                                <div>미적분 관련해서 질문이 있는데요, 극한값 구하는 문제에서 막혔어요 😅</div>
+                            </div>
+                            <div class="message">
+                                <div class="message-author">멘토 김선생님</div>
+                                <div>어떤 부분이 어려우신가요? 구체적인 문제를 올려주시면 단계별로 설명드릴게요!</div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="질문을 입력하세요..." id="chatInput">
+                            <button onclick="sendMessage()">전송</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="clubs-tab" class="tab-content">
+                    <h3>🌟 활발한 동아리들</h3>
+                    <div class="clubs-grid">
+                        <div class="club-card">
+                            <div class="club-header">
+                                <h4>🎮 게임개발동아리</h4>
+                                <p>DimiGame</p>
+                            </div>
+                            <div class="club-content">
+                                <p>Unity와 Unreal Engine을 활용한 게임 개발 동아리</p>
+                                <div class="club-stats">
+                                    <span>👥 24명</span>
+                                    <span>📅 활동중</span>
+                                    <span>🏆 3개 프로젝트</span>
+                                </div>
+                                <button class="join-btn">지원하기</button>
+                            </div>
+                        </div>
+                        <div class="club-card">
+                            <div class="club-header">
+                                <h4>🤖 AI연구동아리</h4>
+                                <p>DimiAI</p>
+                            </div>
+                            <div class="club-content">
+                                <p>머신러닝과 딥러닝을 공부하고 프로젝트를 진행하는 동아리</p>
+                                <div class="club-stats">
+                                    <span>👥 18명</span>
+                                    <span>📅 활동중</span>
+                                    <span>🏆 2개 논문</span>
+                                </div>
+                                <button class="join-btn">지원하기</button>
+                            </div>
+                        </div>
+                        <div class="club-card">
+                            <div class="club-header">
+                                <h4>🎵 밴드동아리</h4>
+                                <p>DimiSound</p>
+                            </div>
+                            <div class="club-content">
+                                <p>다양한 장르의 음악을 연주하고 공연하는 밴드 동아리</p>
+                                <div class="club-stats">
+                                    <span>👥 32명</span>
+                                    <span>📅 활동중</span>
+                                    <span>🎤 월 1회 공연</span>
+                                </div>
+                                <button class="join-btn">지원하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="todo-tab" class="tab-content">
+                    <h3>📝 나의 Todo-list</h3>
+                    <div class="todo-container">
+                        <div class="todo-input">
+                            <input type="text" placeholder="새로운 할 일을 입력하세요..." id="todoInput">
+                            <button onclick="addTodo()">추가</button>
+                        </div>
+                        <ul class="todo-list" id="todoList">
+                            <li class="todo-item">
+                                <input type="checkbox" class="todo-checkbox" onchange="toggleTodo(this)">
+                                <span class="todo-text">자료구조 과제 제출 (마감: 9/5)</span>
+                                <button class="delete-btn" onclick="deleteTodo(this)">삭제</button>
+                            </li>
+                            <li class="todo-item completed">
+                                <input type="checkbox" class="todo-checkbox" checked onchange="toggleTodo(this)">
+                                <span class="todo-text">웹프로그래밍 프로젝트 기획서 작성</span>
+                                <button class="delete-btn" onclick="deleteTodo(this)">삭제</button>
+                            </li>
+                            <li class="todo-item">
+                                <input type="checkbox" class="todo-checkbox" onchange="toggleTodo(this)">
+                                <span class="todo-text">알고리즘 스터디 참석 (매주 화요일)</span>
+                                <button class="delete-btn" onclick="deleteTodo(this)">삭제</button>
+                            </li>
+                            <li class="todo-item">
+                                <input type="checkbox" class="todo-checkbox" onchange="toggleTodo(this)">
+                                <span class="todo-text">동아리 회의 참석 (9/3 오후 6시)</span>
+                                <button class="delete-btn" onclick="deleteTodo(this)">삭제</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 스터디미 (Stu-DIMI), 함께 성장하는 학습 커뮤니티.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked button
+            if(event) event.target.classList.add('active');
+        }
+
+        // Todo functionality
+        function addTodo() {
+            const input = document.getElementById('todoInput');
+            const todoText = input.value.trim();
+            
+            if (todoText === '') return;
+            
+            const todoList = document.getElementById('todoList');
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+            li.innerHTML = `
+                <input type="checkbox" class="todo-checkbox" onchange="toggleTodo(this)">
+                <span class="todo-text">${todoText}</span>
+                <button class="delete-btn" onclick="deleteTodo(this)">삭제</button>
+            `;
+            
+            todoList.appendChild(li);
+            input.value = '';
+        }
+
+        function toggleTodo(checkbox) {
+            const todoItem = checkbox.parentElement;
+            if (checkbox.checked) {
+                todoItem.classList.add('completed');
+            } else {
+                todoItem.classList.remove('completed');
+            }
+        }
+
+        function deleteTodo(button) {
+            const todoItem = button.parentElement;
+            todoItem.remove();
+        }
+
+        // Chat functionality
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messageText = input.value.trim();
+            
+            if (messageText === '') return;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.innerHTML = `
+                <div class="message-author">김디미</div>
+                <div>${messageText}</div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            input.value = '';
+            
+            // 멘토 응답 시뮬레이션
+            setTimeout(() => {
+                const mentorResponse = document.createElement('div');
+                mentorResponse.className = 'message';
+                mentorResponse.innerHTML = `
+                    <div class="message-author">멘토 김선생님</div>
+                    <div>좋은 질문이네요! 차근차근 설명해드릴게요. 😊</div>
+                `;
+                chatMessages.appendChild(mentorResponse);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+
+        // Enter key support for inputs
+        document.getElementById('todoInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Auto-refresh stats (시뮬레이션)
+        setInterval(() => {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                if (Math.random() > 0.8) { // 20% 확률로 업데이트
+                    const currentValue = parseInt(stat.textContent);
+                    if (stat.textContent.includes('%')) {
+                        const newValue = Math.min(100, currentValue + Math.floor(Math.random() * 3));
+                        stat.textContent = newValue + '%';
+                    } else {
+                        const change = Math.floor(Math.random() * 3) - 1; // -1, 0, 1
+                        const newValue = Math.max(0, currentValue + change);
+                        stat.textContent = newValue;
+                    }
+                }
+            });
+        }, 30000); // 30초마다 업데이트
+
+        // Notification system (간단한 알림 시스템)
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : '#667eea'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 5px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // 페이지 로드 시 환영 메시지
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showNotification('스터디미에 오신 것을 환영합니다! 🎉', 'success');
+            }, 1000);
+        });
+
+        // 스터디 그룹 참여 기능
+        document.querySelectorAll('.join-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent === '참여하기') {
+                    this.textContent = '참여 완료 ✓';
+                    this.style.background = '#4CAF50';
+                    showNotification('스터디 그룹에 성공적으로 참여했습니다!', 'success');
+                } else if (this.textContent === '지원하기') {
+                    this.textContent = '지원 완료 ✓';
+                    this.style.background = '#4CAF50';
+                    showNotification('동아리 지원이 완료되었습니다!', 'success');
+                }
+            });
+        });
+
+        // 애니메이션을 위한 CSS 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            .feature-card:hover .feature-icon {
+                transform: scale(1.1);
+                transition: transform 0.3s ease;
+            }
+            .study-groups .group-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+                transition: all 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- 추가 스크립트: 메뉴 클릭 시 스크롤 + 탭 열기 -->
+    <script>
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // 기본 앵커 동작 막기
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetTab = document.getElementById(targetId);
+
+                // 탭 열기
+                showTab(targetId);
+
+                // 부드럽게 스크롤
+                targetTab.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
