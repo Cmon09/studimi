@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const http = require('http');
 const { Server } = require('socket.io');
-const path = require('path');   // ✅ 추가된 부분
+const path = require('path');
 const db = require('./db');
 require('dotenv').config();
 
@@ -80,10 +80,25 @@ app.get('/api/clubs',(req,res)=>{
   res.json([{id:1,name:'축구부'},{id:2,name:'음악동아리'}]);
 });
 
-// --- ✅ 정적 파일 제공 (추가 부분) ---
+// --- 정적 파일 제공 ---
 app.use(express.static(path.join(__dirname)));
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// 추가된 개별 페이지 라우트
+app.get('/lectures', (req, res) => {
+  res.sendFile(path.join(__dirname, 'lectures.html'));
+});
+app.get('/mentoring', (req, res) => {
+  res.sendFile(path.join(__dirname, 'mentoring.html'));
+});
+app.get('/clubs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'clubs.html'));
+});
+app.get('/todo', (req, res) => {
+  res.sendFile(path.join(__dirname, 'todo.html'));
 });
 
 // --- Socket.IO ---
