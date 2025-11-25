@@ -175,6 +175,7 @@ main {
 .mentoring .feature-icon { background: linear-gradient(45deg, #4ECDC4, #7FDBDA); }
 .clubs .feature-icon { background: linear-gradient(45deg, #45B7D1, #7CC7E8); }
 .todo .feature-icon { background: linear-gradient(45deg, #96CEB4, #B8E6C1); }
+.cal .feature-icon { background: linear-gradient(45deg, #FFB6B6, #FFDFDF); }
 
 /* Dashboard Preview */
 .dashboard-preview {
