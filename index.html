@@ -6,6 +6,257 @@
     <title>StuDimi - 디미고 학습 도우미</title>
     <!-- 외부 CSS 로드 -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 캘린더 전용 스타일 추가 */
+        .calendar-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .calendar-nav-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav-btn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+
+        .modern-calendar {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 8px;
+        }
+
+        .modern-calendar thead th {
+            padding: 1rem;
+            font-weight: 600;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .modern-calendar thead th.sunday {
+            color: #ff4757;
+        }
+
+        .modern-calendar thead th.saturday {
+            color: #667eea;
+        }
+
+        .modern-calendar td {
+            padding: 0;
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            height: 80px;
+            vertical-align: top;
+            position: relative;
+        }
+
+        .calendar-day {
+            cursor: pointer;
+            background: white;
+        }
+
+        .calendar-day:hover {
+            background: #f0f3ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .calendar-day.today {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .calendar-day.today .day-number {
+            color: white;
+            font-weight: bold;
+        }
+
+        .calendar-day.has-event {
+            border: 2px solid #667eea;
+        }
+
+        .day-number {
+            padding: 0.5rem;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .other-month {
+            color: #ccc;
+            background: transparent;
+        }
+
+        .event-dots {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            padding: 0 0.5rem 0.5rem;
+        }
+
+        .event-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .event-dot.deadline {
+            background: #ff4757;
+        }
+
+        .event-dot.study {
+            background: #2ed573;
+        }
+
+        .event-dot.club {
+            background: #ffa502;
+        }
+
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.event-deadline {
+            background: #ff4757;
+        }
+
+        .legend-dot.event-study {
+            background: #2ed573;
+        }
+
+        .legend-dot.event-club {
+            background: #ffa502;
+        }
+
+        .cal-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .event-detail {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .event-detail h4 {
+            margin: 0 0 1rem 0;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .event-date {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        .event-item.deadline {
+            border-left: 4px solid #ff4757;
+        }
+
+        .event-item.study {
+            border-left: 4px solid #2ed573;
+        }
+
+        .event-item.club {
+            border-left: 4px solid #ffa502;
+        }
+
+        .event-icon {
+            font-size: 1.5rem;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-time {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .cal-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modern-calendar td {
+                height: 60px;
+            }
+
+            .calendar-legend {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,6 +267,7 @@
                 <li><a href="#mentoring-tab">멘토링</a></li>
                 <li><a href="#clubs-tab">동아리</a></li>
                 <li><a href="#todo-tab">Todo-list</a></li>
+                <li><a href="#cal-tab">캘린더</a></li>
             </ul>
             <div class="user-info">
                 <span>김디미님 환영합니다!</span>
@@ -79,12 +331,24 @@
                         <li>팀 프로젝트 공동 관리</li>
                     </ul>
                 </div>
+
+                <div class="feature-card cal">
+                    <div class="feature-icon">📆</div>
+                    <h3>나만의 캘린더</h3>
+                    <p>주요 일정 표시 및 알림</p>
+                    <ul class="feature-list">
+                        <li>달력에 주요 일정 표시</li>
+                        <li>일정 추가 및 수정 기능</li>
+                        <li>일정 삭제 기능</li>
+                        <li>일정 당일 알림</li>
+                    </ul>
+                </div>
             </section>
 
             <section class="dashboard-preview">
                 <div class="dashboard-header">
                     <h2>📊 나의 학습 대시보드</h2>
-                    <span>오늘: 2025년 9월 1일</span>
+                    <span>오늘: 2025년 9월 9일</span>
                 </div>
                 
                 <div class="stats-grid">
@@ -111,6 +375,7 @@
                     <button class="tab-button" onclick="showTab('mentoring-tab')">💬 멘토링</button>
                     <button class="tab-button" onclick="showTab('clubs-tab')">👥 동아리</button>
                     <button class="tab-button" onclick="showTab('todo-tab')">✅ Todo-list</button>
+                    <button class="tab-button" onclick="showTab('cal-tab')">📆 캘린더</button>
                 </div>
 
                 <div id="lectures-tab" class="tab-content active">
@@ -118,19 +383,19 @@
                     <div class="study-groups">
                         <div class="group-card">
                             <div class="group-title">알고리즘 문제해결 스터디</div>
-                            <div class="group-meta">👥 4/6명 | 📅 매주 화, 목 19:00</div>
+                            <div class="group-meta">👥 4/6명 | 📅 매주 화, 목 21:30</div>
                             <p>백준 골드 문제 위주로 진행하는 스터디입니다.</p>
                             <button class="join-btn">참여하기</button>
                         </div>
                         <div class="group-card">
                             <div class="group-title">웹개발 프로젝트팀</div>
-                            <div class="group-meta">👥 3/5명 | 📅 매일 20:00</div>
+                            <div class="group-meta">👥 3/5명 | 📅 매일 20:15</div>
                             <p>React와 Node.js로 실제 서비스를 만드는 팀입니다.</p>
                             <button class="join-btn">참여하기</button>
                         </div>
                         <div class="group-card">
                             <div class="group-title">수학 기초반 스터디</div>
-                            <div class="group-meta">👥 6/8명 | 📅 매주 월, 수, 금 18:30</div>
+                            <div class="group-meta">👥 6/8명 | 📅 매주 월, 수, 금 17:15</div>
                             <p>수학 기초부터 차근차근 다지는 스터디입니다.</p>
                             <button class="join-btn">참여하기</button>
                         </div>
@@ -168,7 +433,7 @@
                         <div class="club-card">
                             <div class="club-header">
                                 <h4>🎮 게임개발동아리</h4>
-                                <p>DimiGame</p>
+                                <p>BlueGames</p>
                             </div>
                             <div class="club-content">
                                 <p>Unity와 Unreal Engine을 활용한 게임 개발 동아리</p>
@@ -183,7 +448,7 @@
                         <div class="club-card">
                             <div class="club-header">
                                 <h4>🤖 AI연구동아리</h4>
-                                <p>DimiAI</p>
+                                <p>Outtegral</p>
                             </div>
                             <div class="club-content">
                                 <p>머신러닝과 딥러닝을 공부하고 프로젝트를 진행하는 동아리</p>
@@ -198,7 +463,7 @@
                         <div class="club-card">
                             <div class="club-header">
                                 <h4>🎵 밴드동아리</h4>
-                                <p>DimiSound</p>
+                                <p>Latly-pick</p>
                             </div>
                             <div class="club-content">
                                 <p>다양한 장르의 음악을 연주하고 공연하는 밴드 동아리</p>
@@ -223,7 +488,7 @@
                         <ul class="todo-list" id="todoList">
                             <li class="todo-item">
                                 <input type="checkbox" class="todo-checkbox" onchange="toggleTodo(this)">
-                                <span class="todo-text">자료구조 과제 제출 (마감: 9/5)</span>
+                                <span class="todo-text">자료구조 과제 제출 (마감: 9/15)</span>
                                 <button class="delete-btn" onclick="deleteTodo(this)">삭제</button>
                             </li>
                             <li class="todo-item completed">
@@ -238,11 +503,187 @@
                             </li>
                             <li class="todo-item">
                                 <input type="checkbox" class="todo-checkbox" onchange="toggleTodo(this)">
-                                <span class="todo-text">동아리 회의 참석 (9/3 오후 6시)</span>
+                                <span class="todo-text">동아리 회의 참석 (9/27 오후 6시)</span>
                                 <button class="delete-btn" onclick="deleteTodo(this)">삭제</button>
                             </li>
                         </ul>
                     </div>
+                </div>
+
+                <div id="cal-tab" class="tab-content">
+                    <h3>📆 나의 calendar</h3>
+                    <div class="cal-container">
+                        <div class="calendar-wrapper">
+                            <div class="calendar-header">
+                                <button class="calendar-nav-btn" id="prevMonth">◀</button>
+                                <h2 id="currentMonth"></h2>
+                                <button class="calendar-nav-btn" id="nextMonth">▶</button>
+                            </div>
+                            <div id="calendar"></div>
+                            <div class="calendar-legend">
+                                <div class="legend-item">
+                                    <span class="legend-dot event-deadline"></span>
+                                    <span>과제 마감</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot event-study"></span>
+                                    <span>스터디</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot event-club"></span>
+                                    <span>동아리</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-detail" id="eventDetail" style="display: none;">
+                            <h4>일정 상세</h4>
+                            <div id="eventDetailContent"></div>
+                        </div>
+                    </div>
+                    <script>
+                        let currentCalendarDate = new Date();
+                        
+                        // 샘플 이벤트 데이터
+                        const events = {
+                            '2024-11-15': [
+                                { type: 'deadline', title: '자료구조 과제 제출', time: '23:59' }
+                            ],
+                            '2024-11-12': [
+                                { type: 'study', title: '알고리즘 스터디', time: '21:30' }
+                            ],
+                            '2024-11-14': [
+                                { type: 'study', title: '알고리즘 스터디', time: '21:30' }
+                            ],
+                            '2024-11-27': [
+                                { type: 'club', title: '동아리 회의', time: '18:00' }
+                            ]
+                        };
+
+                        function generateCalendar(date = currentCalendarDate) {
+                            const calendarContainer = document.getElementById("calendar");
+                            const monthTitle = document.getElementById("currentMonth");
+                            
+                            const year = date.getFullYear();
+                            const month = date.getMonth();
+                            const today = new Date();
+
+                            monthTitle.textContent = `${year}년 ${month + 1}월`;
+
+                            let calendarHTML = '<table class="modern-calendar">';
+
+                            // 요일 표시
+                            calendarHTML += '<thead><tr>';
+                            const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+                            daysOfWeek.forEach((day, index) => {
+                                const className = index === 0 ? 'sunday' : index === 6 ? 'saturday' : '';
+                                calendarHTML += `<th class="${className}">${day}</th>`;
+                            });
+                            calendarHTML += '</tr></thead><tbody>';
+
+                            // 날짜 계산
+                            const totalDaysInMonth = new Date(year, month + 1, 0).getDate();
+                            const firstDayOfMonth = new Date(year, month, 1).getDay();
+                            const lastDayOfPrevMonth = new Date(year, month, 0).getDate();
+
+                            let dayCounter = 1;
+                            let nextMonthDay = 1;
+
+                            for (let i = 0; i < 6; i++) {
+                                calendarHTML += '<tr>';
+                                for (let j = 0; j < 7; j++) {
+                                    if (i === 0 && j < firstDayOfMonth) {
+                                        // 이전 달 날짜
+                                        const prevDay = lastDayOfPrevMonth - firstDayOfMonth + j + 1;
+                                        calendarHTML += `<td class="other-month">${prevDay}</td>`;
+                                    } else if (dayCounter > totalDaysInMonth) {
+                                        // 다음 달 날짜
+                                        calendarHTML += `<td class="other-month">${nextMonthDay}</td>`;
+                                        nextMonthDay++;
+                                    } else {
+                                        // 현재 달 날짜
+                                        const isToday = today.getDate() === dayCounter && 
+                                                       today.getMonth() === month && 
+                                                       today.getFullYear() === year;
+                                        
+                                        const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayCounter).padStart(2, '0')}`;
+                                        const dayEvents = events[dateKey] || [];
+                                        
+                                        let eventDots = '';
+                                        if (dayEvents.length > 0) {
+                                            eventDots = '<div class="event-dots">';
+                                            dayEvents.forEach(event => {
+                                                eventDots += `<span class="event-dot ${event.type}"></span>`;
+                                            });
+                                            eventDots += '</div>';
+                                        }
+                                        
+                                        const todayClass = isToday ? 'today' : '';
+                                        const hasEventClass = dayEvents.length > 0 ? 'has-event' : '';
+                                        
+                                        calendarHTML += `
+                                            <td class="calendar-day ${todayClass} ${hasEventClass}" 
+                                                data-date="${dateKey}"
+                                                onclick="showEventDetail('${dateKey}')">
+                                                <div class="day-number">${dayCounter}</div>
+                                                ${eventDots}
+                                            </td>
+                                        `;
+                                        dayCounter++;
+                                    }
+                                }
+                                calendarHTML += '</tr>';
+                                if (dayCounter > totalDaysInMonth && nextMonthDay > 7) break;
+                            }
+
+                            calendarHTML += '</tbody></table>';
+                            calendarContainer.innerHTML = calendarHTML;
+                        }
+
+                        function showEventDetail(dateKey) {
+                            const dayEvents = events[dateKey];
+                            const eventDetail = document.getElementById('eventDetail');
+                            const eventDetailContent = document.getElementById('eventDetailContent');
+                            
+                            if (dayEvents && dayEvents.length > 0) {
+                                const date = new Date(dateKey);
+                                let detailHTML = `<p class="event-date">${date.getMonth() + 1}월 ${date.getDate()}일</p>`;
+                                
+                                dayEvents.forEach(event => {
+                                    const typeText = event.type === 'deadline' ? '📝' : 
+                                                   event.type === 'study' ? '📚' : '👥';
+                                    detailHTML += `
+                                        <div class="event-item ${event.type}">
+                                            <span class="event-icon">${typeText}</span>
+                                            <div class="event-info">
+                                                <div class="event-title">${event.title}</div>
+                                                <div class="event-time">${event.time}</div>
+                                            </div>
+                                        </div>
+                                    `;
+                                });
+                                
+                                eventDetailContent.innerHTML = detailHTML;
+                                eventDetail.style.display = 'block';
+                            } else {
+                                eventDetail.style.display = 'none';
+                            }
+                        }
+
+                        // 월 이동 기능
+                        document.getElementById('prevMonth').addEventListener('click', () => {
+                            currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+                            generateCalendar(currentCalendarDate);
+                        });
+
+                        document.getElementById('nextMonth').addEventListener('click', () => {
+                            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+                            generateCalendar(currentCalendarDate);
+                        });
+
+                        // 페이지 로드 시 자동 생성  (여기만 수정)
+                        window.addEventListener("load", () => generateCalendar());
+                    </script>
+
                 </div>
             </section>
         </div>
@@ -251,6 +692,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 스터디미 (Stu-DIMI), 함께 성장하는 학습 커뮤니티.</p>
+            <p>개발자 살려</p>
         </div>
     </footer>
 
@@ -457,6 +899,5 @@
             });
         });
     </script>
-
 </body>
 </html>
