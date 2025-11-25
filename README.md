@@ -10,12 +10,13 @@ _support lectures • CA • projects_
 - 💬 실시간 멘토링 센터: 질문/답변, 전문멘토 배치, HiClass 연동 서비스
 - 👥 동아리 통합 관리: 현황, 모집, 협업매칭
 - ✅ 스마트 Todo-list: 자동알림, 진행상황 시각화, 팀프로젝트 공동 관리
+- 📆 나만의 캘린더: 일정표시, 추가/삭제, 당일알림
 
 ---
 
 ## Tech Stack
 **Frontend**: HTML5, CSS3, Vanilla JavaScript  
-**Backend**: Node.js + Express.js
+**Backend**: Node.js + Express.js  
 **DB**: SQLite3
 
 ---
